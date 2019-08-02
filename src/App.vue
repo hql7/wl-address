@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import wlAddress from "./components/address/index.vue";
+// import wlAddress from "./components/address/index.vue";
 
 export default {
   name: "app",
@@ -20,7 +20,7 @@ export default {
     }
   },
   components: {
-    wlAddress
+    // wlAddress
   }
 };
 </script>
