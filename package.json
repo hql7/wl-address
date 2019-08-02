@@ -1,0 +1,63 @@
+{
+  "name": "wl-address",
+  "version": "0.1.0",
+  "private": false,
+  "author": "weilan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hql7/wl-address/issues"
+  },
+  "homepage": "https://github.com/hql7/wl-address#readme",
+  "keyword": "address Three-levelLinkage vue elementUi provinces cities counties",
+  "main": "lib/wl-address.umd.min.js",
+  "description": "一个基于vue和element-ui的省市县三级地址联动插件，数据本地化。A three-level address linkage plug-in for provinces, cities and counties based on Vue and element-ui, data localization",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name wl-address --dest lib src/components/index.js",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "element-ui": "^2.4.5",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-plugin-eslint": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-element": "^1.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:hql7/wl-address.git"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
