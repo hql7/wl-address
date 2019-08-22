@@ -1,6 +1,6 @@
 {
-  "name": "wl-address",
-  "version": "0.1.0",
+  "name": "wl--address",
+  "version": "0.2.1",
   "private": false,
   "author": "weilan",
   "license": "ISC",
@@ -21,12 +21,12 @@
     "core-js": "^2.6.5",
     "element-ui": "^2.4.5",
     "vue": "^2.6.10",
-    "wl-address": "^0.1.0"
+    "wl-address": "^0.2.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.0",
-    "@vue/cli-plugin-eslint": "^3.9.0",
-    "@vue/cli-service": "^3.9.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-component": "^1.1.1",
     "eslint": "^5.16.0",

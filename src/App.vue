@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <wlAddress class="my-wl-address" :address.sync="address_data"></wlAddress>
+    <h4>
+        模式：三个下拉框联动模式；一个下拉框级联模式；&nbsp;&nbsp;
+        <button  @click="changeAddressMode"
+          >当前模式：{{ address_mode }}</button
+        >
+    </h4>
+    <wlAddress class="my-wl-address" :type="address_mode" :address.sync="address_data"></wlAddress>
   </div>
 </template>
 
@@ -11,8 +17,14 @@ export default {
   name: "app",
   data() {
     return {
-      address_data: ""
+      address_mode: "default", // default普通 cascader级联
+      address_data: "", // 选中地址
     };
+  },
+  methods: {
+    changeAddressMode(){
+      this.address_mode = this.address_mode == "default" ? 'cascader' : "default";            
+    }
   },
   watch: {
     address_data(val) {

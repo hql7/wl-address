@@ -5,20 +5,23 @@ import addressData from "./address-data.min";
  */
 function getProvince() {
   let data = addressData.filter(item => /[1-9]{2}0000$/.test(item.code));
+  data.forEach(item => (item.children = []));
   return data;
 }
 
 /**
  * 返回所有城市
  * @param {*} parent 父级
+ * @param {*} auto 是否自动级别，不强制三级联动
  */
-function getCity(parent) {
+function getCity(parent, auto) {
   let p = parent.code.substring(0, 2);
   let reg = `^${p}[0-9][1-9]00$`;
   let filter_ = new RegExp(reg);
   let data = addressData.filter(item => filter_.test(item.code));
+  data.forEach(item => (item.children = []));
   if (data.length > 0) return data;
-  return [parent];
+  return auto ? getCounty(parent) : [parent];
 }
 
 /**
@@ -55,7 +58,9 @@ function analysisAddress(data) {
       county_act = { name: "" }
     ] = address;
 
-    return province_act.name + " " + city_act.name + " " + county_act.name;
+    return province_act.code !== city_act.code
+      ? province_act.name + " " + city_act.name + " " + county_act.name
+      : province_act.name + " " + county_act.name;
   }
   return "";
 }
