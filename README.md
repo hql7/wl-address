@@ -1,30 +1,5 @@
 # wl-address
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 #简介
   这是一个基于elementUi的el-select组件的省市县三级地址联动插件，使用本地化数据，无接口依赖。
   [el-select](https://element.eleme.cn/#/zh-CN/component/select)
@@ -52,6 +27,8 @@ npm run lint
   | 3| type| 三个下拉框联动模式和一个下拉框级联模式 | String |default/cascader| default |
 
 ## 版本记录
+
+3. 0.2.2 修复级联模式高度无限制的错误
 
 2. 0.2.1 发布，增加为两个模式：三个下拉框联动模式和一个下拉框级联模式
 

@@ -7,13 +7,7 @@
       value-key="code"
       :size="size"
     >
-      <el-option
-        v-for="item in provinces"
-        :key="item.code"
-        :label="item.name"
-        :value="item"
-      >
-      </el-option>
+      <el-option v-for="item in provinces" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
     <el-select
       v-model="city_act"
@@ -22,13 +16,7 @@
       placeholder="请选择城市"
       @change="citysChange"
     >
-      <el-option
-        v-for="item in citys"
-        :key="item.code"
-        :label="item.name"
-        :value="item"
-      >
-      </el-option>
+      <el-option v-for="item in citys" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
     <el-select
       v-model="county_act"
@@ -37,18 +25,13 @@
       placeholder="请选择区/县"
       @change="countysChange"
     >
-      <el-option
-        v-for="item in countys"
-        :key="item.code"
-        :label="item.name"
-        :value="item"
-      >
-      </el-option>
+      <el-option v-for="item in countys" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
   </div>
   <el-cascader
     v-else
     v-model="cascader_val"
+    popper-class="wl-address-cascader"
     :size="size"
     :options="provinces"
     :props="cascader_props"
@@ -242,12 +225,20 @@ export default {
 </script>
 
 <style lang="css">
-.wl-address{
+.wl-address {
   display: flex;
   justify-content: space-between;
 }
 
-.wl-address .el-select{
+.wl-address .el-select {
   flex: 0.31;
+}
+
+.wl-address-cascader .el-scrollbar {
+  max-height: 400px;
+}
+
+.wl-address-cascader .el-scrollbar > .el-scrollbar__wrap {
+  overflow-x: hidden;
 }
 </style>
