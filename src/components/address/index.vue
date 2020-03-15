@@ -3,38 +3,53 @@
     <el-select
       @change="provinceChange"
       v-model="province_act"
-      placeholder="请选择省份"
-      value-key="code"
+      :filterable="filterable"
+      :clearable="clearable"
+      :disabled="disabled"
       :size="size"
+      value-key="code"
+      placeholder="请选择省份"
     >
       <el-option v-for="item in provinces" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
     <el-select
+      @change="citysChange"
       v-model="city_act"
+      :filterable="filterable"
+      :clearable="clearable"
+      :disabled="disabled"
       :size="size"
       value-key="code"
       placeholder="请选择城市"
-      @change="citysChange"
     >
       <el-option v-for="item in citys" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
     <el-select
+      @change="countysChange"
       v-model="county_act"
+      :filterable="filterable"
+      :clearable="clearable"
+      :disabled="disabled"
       :size="size"
       value-key="code"
       placeholder="请选择区/县"
-      @change="countysChange"
     >
       <el-option v-for="item in countys" :key="item.code" :label="item.name" :value="item"></el-option>
     </el-select>
   </div>
   <el-cascader
-    v-else
-    v-model="cascader_val"
     popper-class="wl-address-cascader"
+    v-model="cascader_val"
+    v-else
     :size="size"
+    :disabled="disabled"
     :options="provinces"
+    :clearable="clearable"
+    :separator="separator"
     :props="cascader_props"
+    :filterable="filterable"
+    :placeholder="placeholder"
+    :show-all-levels="showAllLevels"
     @change="getCascaderVal"
     @active-item-change="handleItemChange"
   ></el-cascader>
@@ -43,7 +58,7 @@
 import { getProvince, getCity, getCounty } from "./address.js"; // 导入获取省市县
 
 export default {
-  name: "wlAddress",
+  name: "wl-address",
   data() {
     return {
       provinces: [], // 省份
@@ -84,6 +99,32 @@ export default {
     address: {
       type: String,
       default: ""
+    },
+    // 是否可搜索
+    filterable: {
+      type: Boolean,
+      default: false
+    },
+    // 是否可清空选项
+    clearable: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: "请选择地址"
+    },
+    // 是否禁用
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    // cascader模式选项分隔符
+    separator: String,
+    // cascader模式选项分隔符
+    showAllLevels: {
+      type: Boolean,
+      default: true
     }
   },
   created() {
@@ -108,6 +149,10 @@ export default {
     },
     // 选择完毕数据组装
     getCascaderVal(val) {
+      if(val.length === 0){
+        this.$emit("update:address", "");
+        return
+      }
       let [pro, cit, con] = val;
       this.province_act = this.provinces.find(item => item.code === pro);
       if (con) {
@@ -209,7 +254,12 @@ export default {
         this.countys = getCounty(act_city);
         act_city.children = this.countys;
       }
-    }
+    },
+    // 级联筛选函数
+    /* filterMethod(node, key) {
+      console.log(node);
+      console.log(key);
+    } */
   },
   watch: {
     address(val) {
@@ -231,7 +281,7 @@ export default {
 }
 
 .wl-address .el-select {
-  flex: 0.31;
+  flex: 0.33;
 }
 
 .wl-address-cascader .el-scrollbar {
