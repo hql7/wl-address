@@ -4,7 +4,7 @@
   这是一个基于elementUi的el-select组件的省市县三级地址联动插件，使用本地化数据，无接口依赖。
   [el-select](https://element.eleme.cn/#/zh-CN/component/select)
 
-## [在线演示](https://hql7.github.io/)
+## [在线演示](http://192.168.1.53:8080/ui/ssx)
 
 ## 快速上手
 
